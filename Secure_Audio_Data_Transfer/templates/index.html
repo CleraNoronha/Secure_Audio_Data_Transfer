@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Audio Steganography</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1f1c2c);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.sections {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;
+    min-width: 300px;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.card h2 {
+    color: #00f5d4;
+    margin-bottom: 20px;
+}
+
+label {
+    color: white;
+    font-size: 14px;
+}
+
+input[type="file"] {
+    width: 100%;
+    margin: 10px 0 20px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+
+input[type="file"]::file-selector-button {
+    background: #00f5d4;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    background: #00f5d4;
+    color: black;
+}
+
+button:hover {
+    background: #00c2a8;
+    transform: scale(1.05);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🔐 Secure Audio Steganography System</h1>
+
+    <div class="sections">
+
+        <!-- Sender -->
+        <div class="card">
+            <h2>🟢 Sender</h2>
+            <form action="/send" method="POST" enctype="multipart/form-data">
+                
+                <label>Secret File</label>
+                <input type="file" name="secret" required>
+
+                <label>Cover WAV File</label>
+                <input type="file" name="cover" required>
+
+                <button type="submit">Encrypt & Embed</button>
+            </form>
+        </div>
+
+        <!-- Receiver -->
+        <div class="card">
+            <h2>🔵 Receiver</h2>
+            <form action="/receive" method="POST" enctype="multipart/form-data">
+                
+                <label>Stego WAV File</label>
+                <input type="file" name="stego" required>
+
+                <button type="submit">Extract & Decrypt</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Hybrid Encryption (RSA + AES) | WAV LSB Steganography | Flask Web App
+    </div>
+</div>
+
+</body>
+</html>
